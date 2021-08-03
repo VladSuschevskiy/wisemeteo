@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="stylesheet" href="./css/chartist.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="css/mainstyles.css" rel='stylesheet'>
+	<link href="css/header.css" rel='stylesheet'>
+	<link href="css/main.css" rel='stylesheet'>
+	<link href="css/footer.css" rel='stylesheet'>
+	<link href="css/navigation.css" rel="stylesheet">
+    <link href="css/chartist.css" rel="stylesheet">
+
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> 
+
+	
+	<script src="./chartist.js"></script>
+	<script src="./chartist-plugin-pointlabels.min.js"></script>
+	
+    
+    <script src="./app.js"></script>
+</head>
+
+<body>
+	<header class="pt-1">
+		<div class="header-mobile">
+			<div class="container">
+				<div class="row">
+					<div class="col-6">
+						<a class="logo navbar-brand " href="#">wisemeteo</a>
+					</div>
+					<div class="col-6">
+						<div class="m-filter justify-content-end">
+							<div class="dropdown">
+								<a class="nav-link dropdown-toggle d-flex" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								En
+								<div class="characters ms-1"></div>
+								</a>
+								<ul class="dropdown-menu mx-auto " aria-labelledby="navbarDropdown">
+									<li><a class="dropdown-item item-active" id="dropdown-item-color" href="#">En</a></li>
+									<li><a class="dropdown-item" id="dropdown-item-color" href="#">De</a></li>
+									<li><a class="dropdown-item" id="dropdown-item-color" href="#">Рус</a></li>
+									<li><a class="dropdown-item" id="dropdown-item-color" href="#">Укр</a></li>
+								</ul>
+							</div>
+							<div class="dropdown">
+								<a class="nav-link dropdown-toggle d-flex" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								°F
+								<div class="characters ms-1"></div>
+								</a>
+								<ul class="dropdown-menu mx-auto" aria-labelledby="navbarDropdown">
+									<li><a class="dropdown-item" id="dropdown-item-color" href="#">°C</a></li>
+									<li><a class="dropdown-item item-active" id="dropdown-item-color" href="#">°F</a></li>
+								</ul>
+							</div>
+							<div class="dropdown">
+								<a class="nav-link dropdown-toggle d-flex" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								M
+								<div class="characters ms-1"></div>
+								</a>
+								<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+									<li><a class="dropdown-item" id="dropdown-item-color" href="#">KM</a></li>
+									<li><a class="dropdown-item item-active" id="dropdown-item-color" href="#">M</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col-12">
+						<form class="search position-relative mb-4">
+							<input class="form-control" id="form-custom" type="search" placeholder="City, region or country" aria-label="City, region or country" autocomplete="off">
+							<div id="dr" class="search-subcontainer">
+								<div class="country ms-4 mt-4">Texas City, Texas, United States</div>
+								<div class="country ms-4 mt-2">Texas</div>
+							</div>
+							<button class=" search-icon " id="btn-search-icon" type="submit"></button>
+						</form>
+					</div>
+					<div class="m-period d-flex">
+						<ul class="navbar-nav d-flex" style="font-size: 16px; flex-direction: row;" >
+							<li class="nav-item mx-2">
+								<a class="nav-day-of-week nav-link active" id="nav-link-black" aria-current="page" href="#">Today</a>
+							</li>
+							<li class="nav-item mx-2">
+								<a class="nav-day-of-week nav-link " id="nav-link-black"  href="#">Tommorow</a>
+								<div class="style"></div>
+							</li>
+							<li class="nav-item mx-2">
+								<a class="nav-day-of-week nav-link " id="nav-link-black" href="#">One week</a>
+							</li>
+							<li class="nav-item mx-2">
+								<a class="nav-day-of-week nav-link "  id="nav-link-black" href="#">Two weeks</a>
+							</li>
+							<li class="nav-item mx-2">
+								<a class="nav-day-of-week nav-link "  id="nav-link-black" href="#">Month</a>
+							</li>
+							<li class="nav-item mx-2">
+								<a class="nav-day-of-week nav-link "  id="nav-link-black" href="#">Three months</a>
+							</li>
+							<li class="nav-item mx-2">
+								<a class="nav-day-of-week nav-link "  id="nav-link-black" href="#">Half year</a>
+							</li>
+							<li class="nav-item mx-2">
+								<a class="nav-day-of-week nav-link "  id="nav-link-black" href="#">Year</a>
+							</li>
+						</ul>
+						<a class="countries py-2" style="font-size: 16px;" aria-current="page" href="#"><img class="countries__icon" src="./image/countries.svg "> Countries</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="header-desktop">
+			<div class="container">
+				<div class="row">
+					<div class="col-2">
+						<a class="logo navbar-brand " href="#">wisemeteo</a>
+					</div>
+					<div class="col-8">
+						<div class="d-flex">
+							<div class="nav-item">
+								<a class="nav-link fs-6 countries " aria-current="page" href="#"><img class="countries__icon" src="./image/countries.svg "> Countries</a>
+							</div>
+							<div class="w-100 nav-item ps-5">
+								<form class="search position-relative">
+									<input class="form-control me-2" id="form-custom" type="search" placeholder="City, region or country" aria-label="City, region or country" autocomplete="off">
+									<div id="dr" class="search-subcontainer">
+										<div class="country ms-4 mt-4">Texas City, Texas, United States</div>
+										<div class="country ms-4 mt-2">Texas</div>
+									</div>
+									<button class=" search-icon " id="btn-search-icon" type="submit"></button>
+								</form>
+							</div>
+						</div>
+					</div>
+					<div class="col-2">
+						<div class="d-flex">
+							<div class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle d-flex " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								En
+								<div class="characters ms-1"></div>	
+								</a>
+								<ul class="dropdown-menu mx-auto menu " aria-labelledby="navbarDropdown">
+									<li><a class="dropdown-item item-active" id="dropdown-item-color" href="#">En</a></li>
+									<li><a class="dropdown-item" id="dropdown-item-color" href="#">De</a></li>
+									<li><a class="dropdown-item" id="dropdown-item-color" href="#">Рус</a></li>
+									<li><a class="dropdown-item" id="dropdown-item-color" href="#">Укр</a></li>
+								</ul>
+							</div>
+							<div class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle d-flex" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								°F
+								<div class="characters ms-1"></div>
+								</a>
+								<ul class="dropdown-menu mx-auto menu" aria-labelledby="navbarDropdown">
+									<li><a class="dropdown-item " id="dropdown-item-color" href="#">°C</a></li>
+									<li><a class="dropdown-item item-active" id="dropdown-item-color" href="#">°F</a></li>
+								</ul>
+							</div>
+							<div class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle d-flex" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								M
+								<div class="characters ms-1"></div>
+								</a>
+								<ul class="dropdown-menu menu" aria-labelledby="navbarDropdown">
+									<li><a class="dropdown-item" id="dropdown-item-color" href="#">KM</a></li>
+									<li><a class="dropdown-item item-active" id="dropdown-item-color" href="#">M</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>	
+				<nav class="navbar navbar-expand-lg bg-transparent" >
+					<div class="col-12 block-center">
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul class="navbar-nav mx-auto ps-5" >
+								<li class="nav-item mx-1" >
+									<a class="nav-day-of-week nav-link active" id="nav-link-black" aria-current="page" href="#">Today</a>
+								</li>
+								<li class="nav-item mx-1 ">
+									<a class="nav-day-of-week nav-link" id="nav-link-black"  href="#">Tommorow</a>
+								</li>
+								<li class="nav-item mx-1 ">
+									<a class="nav-day-of-week nav-link" id="nav-link-black" href="#">One week</a>
+								</li>
+								<li class="nav-item mx-1">
+									<a class="nav-day-of-week nav-link"  id="nav-link-black" href="#">Two weeks</a>
+								</li>
+								<li class="nav-item mx-1">
+									<a class="nav-day-of-week nav-link"  id="nav-link-black" href="#">Month</a>
+								</li>
+								<li class="nav-item mx-1">
+									<a class="nav-day-of-week nav-link"  id="nav-link-black" href="#">Three months</a>
+								</li>
+								<li class="nav-item mx-1">
+									<a class="nav-day-of-week nav-link"  id="nav-link-black" href="#">Half year</a>
+								</li>
+								<li class="nav-item mx-1">
+									<a class="nav-day-of-week nav-link"  id="nav-link-black" href="#">Year</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+			</div>
+		</div>
+	</header>
+
+	<main class="main">
+		<div class="container">
+			<div class="row">
+				<div class="col-12 col-md-12 col-lg-4 col-xl-4 col-xxl-3">
+					<div class="main-city-day">
+						<div class="card-body pt-5">
+							<div class="wrapper d-flex justify-content-around d-lg-block">
+								<div class="wrapper">
+									<div class="card-date">22 July 2021, Wednesday</div>
+									<div class="card-city">Toronto</div>
+									<div class="country">Canada</div>
+								</div>
+								<div class="wrapper">
+									<div class="d-flex">									
+										<div class="card-temperature mt-3 text-center">72°</div>
+										<img src="./image/cloudy_sun.svg">
+									</div>
+								</div>	
+							</div>
+							
+							<div class="row">
+                                <div class="col-12 d-flex justify-content-around">
+                                    <div class="wrapper d-flex">
+                                        <img class="" src="./image/umbrella.svg">
+										<div class="country ms-1 mt-1">0%</div>
+                                    </div>
+                                    <div class="wrapper d-flex">
+                                        <img class="" src="./image/frame.svg">
+										<div class="country ms-1 mt-1">11 km/h</div>
+                                    </div>
+                                    <div class="wrapper d-flex">
+										<img class="" src="./image/compass.svg">
+										<div class="country ms-1 mt-1">N-W</div>
+                                    </div>  
+                                </div>
+							</div>
+						</div>
+					</div>
+				</div>	
+				<div class="col-12 col-sm-12 col-md-12 col-lg-8 offset-xxl-1">
+					<div class="dayly-statistic">
+						<div class="wrapper">
+							<div class="hour-forecast justify-content-center flex-column" style="border-radius: 20px 0px 0px 20px;">
+								<div class="time mt-2 text-center">09:00</div>
+								<img class="d-block mx-auto" width="43" src="./image/cloudy_sun.svg">
+								<div class="temperature">72°F</div>
+								<div class="speed text-center">11 km/h</div>
+								<div class="direction mb-1 text-center">N-W</div>
+							</div>
+							<div class="hour-forecast justify-content-center flex-column">
+								<div class="time mt-2 text-center">09:00</div>
+								<img class="d-block mx-auto" width="43" src="./image/cloudy_sun.svg">
+								<div class="temperature">72°F</div>
+								<div class="speed text-center">11 km/h</div>
+								<div class="direction mb-1 text-center">N-W</div>
+							</div>
+							<div class="hour-forecast justify-content-center flex-column">
+								<div class="time mt-2 text-center">09:00</div>
+								<img class="d-block mx-auto" width="43" src="./image/cloudy_sun.svg">
+								<div class="temperature">72°F</div>
+								<div class="speed text-center">11 km/h</div>
+								<div class="direction mb-1 text-center">N-W</div>
+							</div>
+							<div class="hour-forecast justify-content-center flex-column">
+								<div class="time mt-2 text-center">09:00</div>
+								<img class="d-block mx-auto" width="43" src="./image/cloudy_sun.svg">
+								<div class="temperature">72°F</div>
+								<div class="speed text-center">11 km/h</div>
+								<div class="direction mb-1 text-center">N-W</div>
+							</div>
+							<div class="hour-forecast justify-content-center flex-column">
+								<div class="time mt-2 text-center">09:00</div>
+								<img class="d-block mx-auto" width="43" src="./image/cloudy_sun.svg">
+								<div class="temperature">72°F</div>
+								<div class="speed text-center">11 km/h</div>
+								<div class="direction mb-1 text-center">N-W</div>
+							</div>
+							<div class="hour-forecast justify-content-center flex-column">
+								<div class="time mt-2 text-center">09:00</div>
+								<img class="d-block mx-auto" width="43" src="./image/cloudy_sun.svg">
+								<div class="temperature">72°F</div>
+								<div class="speed text-center">11 km/h</div>
+								<div class="direction mb-1 text-center">N-W</div>
+							</div>
+							<div class="hour-forecast justify-content-center flex-column">
+								<div class="time mt-2 text-center">09:00</div>
+								<img class="d-block mx-auto" width="43" src="./image/cloudy_sun.svg">
+								<div class="temperature">72°F</div>
+								<div class="speed text-center">11 km/h</div>
+								<div class="direction mb-1 text-center">N-W</div>
+							</div>
+							<div class="hour-forecast justify-content-center flex-column">
+								<div class="time mt-2 text-center">09:00</div>
+								<img class="d-block mx-auto" width="43" src="./image/cloudy_sun.svg">
+								<div class="temperature text-center">72°F</div>
+								<div class="speed text-center">11 km/h</div>
+								<div class="direction mb-1 text-center">N-W</div>
+							</div>
+							<div class="hour-forecast justify-content-center flex-column" style="border-radius: 0px 20px 20px 0px;">
+								<div class="time mt-2 text-center">09:00</div>
+								<img class="d-block mx-auto" width="43" src="./image/cloudy_sun.svg">
+								<div class="temperature">72°F</div>
+								<div class="speed text-center">11 km/h</div>
+								<div class="direction mb-1 text-center">N-W</div>
+							</div>	
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-6 col-sm-6 col-md-3">
+							<div class="card-day-of-week mt-3">
+								<div class="date pt-1">23 July</div>
+								<div class="day-of-week">Wednesday</div>
+								<img class="d-block mx-auto" width="43" src="./image/cloudy_sun.svg">
+								<div class="min-max-t mb-2">min 22° max 12°</div>
+							</div>
+						</div>
+						<div class="col-6 col-sm-6 col-md-3">
+							<div class="card-day-of-week mt-3">
+								<div class="date pt-1">23 July</div>
+								<div class="day-of-week">Wednesday</div>
+								<img class="d-block mx-auto" width="43" src="./image/cloudy_sun.svg">
+								<div class="min-max-t mb-2">min 22° max 12°</div>
+							</div>
+						</div>
+						<div class="col-6 col-sm-6 col-md-3">
+							<div class="card-day-of-week mt-3">
+								<div class="date pt-1">23 July</div>
+								<div class="day-of-week">Wednesday</div>
+								<img class="d-block mx-auto" width="43" src="./image/cloudy_sun.svg">
+								<div class="min-max-t mb-2">min 22° max 12°</div>
+							</div>
+						</div>
+						<div class="col-6 col-sm-6 col-md-3">
+							<div class="card-day-of-week mt-3">
+								<div class="date pt-1">23 July</div>
+								<div class="day-of-week">Wednesday</div>
+								<img class="d-block mx-auto" width="43" src="./image/cloudy_sun.svg">
+								<div class="min-max-t mb-2">min 22° max 12°</div>
+							</div>
+						</div>
+					</div>
+				</div>	
+			</div>
+		</div>
+		<div class="envelope">
+			<div class="container">
+				<div class="row">
+					<div class="col-12 col-md-4" >
+						<a class="link" href="#">
+							<div class=" previosly-watched d-flex justify-content-center">
+								<div class="wrapper pt-3">
+									<div class="city-name text-center">Amsterdam</div>
+									<div class="country text-center">Netherlands</div>
+								</div>
+								<img class="ps-2" style="width:80px; height: 80px;" src="./image/cloudy_sun.svg">
+								<div class="temperature pt-4">72°</div>
+							</div>
+						</a>
+					</div>
+					<div class="col-12 col-md-4" >
+						<a class="link" href="#">
+							<div class=" previosly-watched d-flex justify-content-center">
+								<div class="wrapper pt-3">
+									<div class="city-name text-center">Amsterdam</div>
+									<div class="country text-center">Netherlands</div>
+								</div>
+								<img class="ps-2" style="width:80px; height: 80px;" src="./image/cloudy_sun.svg">
+								<div class="temperature pt-4">72°</div>
+							</div>
+						</a>
+					</div>
+					<div class="col-12 col-md-4" >
+						<a class="link" href="#">
+							<div class=" previosly-watched d-flex justify-content-center">
+								<div class="wrapper pt-3">
+									<div class="city-name text-center">Amsterdam</div>
+									<div class="country text-center">Netherlands</div>
+								</div>
+								<img class="ps-2" style="width:80px; height: 80px;" src="./image/cloudy_sun.svg">
+								<div class="temperature pt-4">72°</div>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="envelope">
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+						<div class="d-flex justify-content-center text-center mb-lg-4"> 
+							<h1>Seasonal weather <span class="gradient"> forecast</span></h1>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12 col-md-12 col-lg-4">
+						<div class="card-news-forecast">
+							<div class=" tittle d-flex justify-content-center">
+								What the weather will
+								be like in summer 2021
+								in Toronto?
+							</div>
+							<div class="discription d-flex justify-content-center mt-4">
+								Summer in 2021 year is expected to
+								be rainy and mostly cold. 
+								Temperature in summer will 
+								fluctuate from minimum at 48 °F on 
+								1st June to its maximum at 86 °F on 
+								7th August ...
+							</div>
+							<a class="link d-flex justify-content-center mt-4" href="#">Read forecast
+							</a>
+						</div>
+					</div>
+					<div class="col-12 col-md-12 col-lg-4">
+						<div class="card-news-forecast">
+							<div class=" tittle d-flex justify-content-center">
+								What the weather will
+								be like in summer 2021
+								in Toronto?
+							</div>
+							<div class="discription d-flex justify-content-center mt-4">
+								Summer in 2021 year is expected to
+								be rainy and mostly cold. 
+								Temperature in summer will 
+								fluctuate from minimum at 48 °F on 
+								1st June to its maximum at 86 °F on 
+								7th August ...
+							</div>
+							<a class="link d-flex justify-content-center mt-4" href="#">Read forecast
+							</a>
+						</div>
+					</div>
+					<div class="col-12 col-md-12 col-lg-4">
+						<div class="card-news-forecast">
+							<div class=" tittle d-flex justify-content-center">
+								What the weather will
+								be like in summer 2021
+								in Toronto?
+							</div>
+							<div class="discription d-flex justify-content-center mt-4">
+								Summer in 2021 year is expected to
+								be rainy and mostly cold. 
+								Temperature in summer will 
+								fluctuate from minimum at 48 °F on 
+								1st June to its maximum at 86 °F on 
+								7th August ...
+							</div>
+							<a class="link d-flex justify-content-center mt-4" href="#">Read forecast
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="privacy-policy mt-5">
+						<div class="terms-of-use mt-3 text-center">
+							<div>Terms of use | Privacy Policy | Cookies</div>
+						</div>
+						<div class="terms-of-use mt-3 text-center">
+							<div>© wisemeteo 2021</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+</body>
+</html>

@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="stylesheet" href="./css/chartist.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="css/mainstyles.css" rel='stylesheet'>
+	<link href="css/header.css" rel='stylesheet'>
+	<link href="css/main.css" rel='stylesheet'>
+	<link href="css/footer.css" rel='stylesheet'>
+	<link href="css/navigation.css" rel="stylesheet">
+    <link href="css/chartist.css" rel="stylesheet">
+
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> 
+
+	
+	<script src="./chartist.js"></script>
+	<script src="./chartist-plugin-pointlabels.min.js"></script>
+	
+    
+    <script src="./app.js"></script>
+</head>
+
+<body>
+    <header class="pt-1">
+		<div class="header-mobile">
+			<div class="container">
+				<div class="row">
+					<div class="col-6">
+						<a class="logo navbar-brand " href="#">wisemeteo</a>
+					</div>
+					<div class="col-6">
+						<div class="m-filter justify-content-end">
+							<div class="dropdown">
+								<a class="nav-link dropdown-toggle d-flex" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								En
+								<div class="characters ms-1"></div>
+								</a>
+								<ul class="dropdown-menu mx-auto " aria-labelledby="navbarDropdown">
+									<li><a class="dropdown-item item-active" id="dropdown-item-color" href="#">En</a></li>
+									<li><a class="dropdown-item" id="dropdown-item-color" href="#">De</a></li>
+									<li><a class="dropdown-item" id="dropdown-item-color" href="#">Рус</a></li>
+									<li><a class="dropdown-item" id="dropdown-item-color" href="#">Укр</a></li>
+								</ul>
+							</div>
+							<div class="dropdown">
+								<a class="nav-link dropdown-toggle d-flex" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								°F
+								<div class="characters ms-1"></div>
+								</a>
+								<ul class="dropdown-menu mx-auto" aria-labelledby="navbarDropdown">
+									<li><a class="dropdown-item" id="dropdown-item-color" href="#">°C</a></li>
+									<li><a class="dropdown-item item-active" id="dropdown-item-color" href="#">°F</a></li>
+								</ul>
+							</div>
+							<div class="dropdown">
+								<a class="nav-link dropdown-toggle d-flex" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								M
+								<div class="characters ms-1"></div>
+								</a>
+								<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+									<li><a class="dropdown-item" id="dropdown-item-color" href="#">KM</a></li>
+									<li><a class="dropdown-item item-active" id="dropdown-item-color" href="#">M</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col-12">
+						<form class="search position-relative mb-4">
+							<input class="form-control" id="form-custom" type="search" placeholder="City, region or country" aria-label="City, region or country" autocomplete="off">
+							<div id="dr" class="search-subcontainer">
+								<div class="country ms-4 mt-4">Texas City, Texas, United States</div>
+								<div class="country ms-4 mt-2">Texas</div>
+							</div>
+							<button class=" search-icon " id="btn-search-icon" type="submit"></button>
+						</form>
+					</div>
+					<div class="m-period d-flex">
+						<ul class="navbar-nav d-flex" style="font-size: 16px; flex-direction: row;" >
+							<li class="nav-item mx-2">
+								<a class="nav-day-of-week nav-link active" id="nav-link-black" aria-current="page" href="#">Today</a>
+							</li>
+							<li class="nav-item mx-2">
+								<a class="nav-day-of-week nav-link " id="nav-link-black"  href="#">Tommorow</a>
+								<div class="style"></div>
+							</li>
+							<li class="nav-item mx-2">
+								<a class="nav-day-of-week nav-link " id="nav-link-black" href="#">One week</a>
+							</li>
+							<li class="nav-item mx-2">
+								<a class="nav-day-of-week nav-link "  id="nav-link-black" href="#">Two weeks</a>
+							</li>
+							<li class="nav-item mx-2">
+								<a class="nav-day-of-week nav-link "  id="nav-link-black" href="#">Month</a>
+							</li>
+							<li class="nav-item mx-2">
+								<a class="nav-day-of-week nav-link "  id="nav-link-black" href="#">Three months</a>
+							</li>
+							<li class="nav-item mx-2">
+								<a class="nav-day-of-week nav-link "  id="nav-link-black" href="#">Half year</a>
+							</li>
+							<li class="nav-item mx-2">
+								<a class="nav-day-of-week nav-link "  id="nav-link-black" href="#">Year</a>
+							</li>
+						</ul>
+						<a class="countries py-2" style="font-size: 16px;" aria-current="page" href="#"><img class="countries__icon" src="./image/countries.svg "> Countries</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="header-desktop">
+			<div class="container">
+				<div class="row">
+					<div class="col-2">
+						<a class="logo navbar-brand " href="#">wisemeteo</a>
+					</div>
+					<div class="col-8">
+						<div class="d-flex">
+							<div class="nav-item">
+								<a class="nav-link fs-6 countries " aria-current="page" href="#"><img class="countries__icon" src="./image/countries.svg "> Countries</a>
+							</div>
+							<div class="w-100 nav-item ps-5">
+								<form class="search position-relative">
+									<input class="form-control me-2" id="form-custom" type="search" placeholder="City, region or country" aria-label="City, region or country" autocomplete="off">
+									<div id="dr" class="search-subcontainer">
+										<div class="country ms-4 mt-4">Texas City, Texas, United States</div>
+										<div class="country ms-4 mt-2">Texas</div>
+									</div>
+									<button class=" search-icon " id="btn-search-icon" type="submit"></button>
+								</form>
+							</div>
+						</div>
+					</div>
+					<div class="col-2">
+						<div class="d-flex">
+							<div class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle d-flex " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								En
+								<div class="characters ms-1"></div>	
+								</a>
+								<ul class="dropdown-menu mx-auto menu " aria-labelledby="navbarDropdown">
+									<li><a class="dropdown-item item-active" id="dropdown-item-color" href="#">En</a></li>
+									<li><a class="dropdown-item" id="dropdown-item-color" href="#">De</a></li>
+									<li><a class="dropdown-item" id="dropdown-item-color" href="#">Рус</a></li>
+									<li><a class="dropdown-item" id="dropdown-item-color" href="#">Укр</a></li>
+								</ul>
+							</div>
+							<div class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle d-flex" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								°F
+								<div class="characters ms-1"></div>
+								</a>
+								<ul class="dropdown-menu mx-auto menu" aria-labelledby="navbarDropdown">
+									<li><a class="dropdown-item " id="dropdown-item-color" href="#">°C</a></li>
+									<li><a class="dropdown-item item-active" id="dropdown-item-color" href="#">°F</a></li>
+								</ul>
+							</div>
+							<div class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle d-flex" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								M
+								<div class="characters ms-1"></div>
+								</a>
+								<ul class="dropdown-menu menu" aria-labelledby="navbarDropdown">
+									<li><a class="dropdown-item" id="dropdown-item-color" href="#">KM</a></li>
+									<li><a class="dropdown-item item-active" id="dropdown-item-color" href="#">M</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>	
+				<nav class="navbar navbar-expand-lg bg-transparent" >
+					<div class="col-12 block-center">
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul class="navbar-nav mx-auto ps-5" >
+								<li class="nav-item mx-1" >
+									<a class="nav-day-of-week nav-link active" id="nav-link-black" aria-current="page" href="#">Today</a>
+								</li>
+								<li class="nav-item mx-1 ">
+									<a class="nav-day-of-week nav-link" id="nav-link-black"  href="#">Tommorow</a>
+								</li>
+								<li class="nav-item mx-1 ">
+									<a class="nav-day-of-week nav-link" id="nav-link-black" href="#">One week</a>
+								</li>
+								<li class="nav-item mx-1">
+									<a class="nav-day-of-week nav-link"  id="nav-link-black" href="#">Two weeks</a>
+								</li>
+								<li class="nav-item mx-1">
+									<a class="nav-day-of-week nav-link"  id="nav-link-black" href="#">Month</a>
+								</li>
+								<li class="nav-item mx-1">
+									<a class="nav-day-of-week nav-link"  id="nav-link-black" href="#">Three months</a>
+								</li>
+								<li class="nav-item mx-1">
+									<a class="nav-day-of-week nav-link"  id="nav-link-black" href="#">Half year</a>
+								</li>
+								<li class="nav-item mx-1">
+									<a class="nav-day-of-week nav-link"  id="nav-link-black" href="#">Year</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+			</div>
+		</div>
+	</header>
+	<main class="main">
+		<div class="container">
+            <div class="row mb-5">
+                <div class="col-12">
+                    <div class="d-flex justify-content-center text-center"> 
+                        <h1>Weather forecast for<span class="gradient"> one day</span></h1>
+                    </div>
+                </div>
+            </div>
+			<div class="row">
+				<div class="col-12 col-md-9 col-lg-7 col-xl-5 col-xxl-5">
+                    <div class="row mb-4">
+                        <div class="col-6">
+                            <div class="wrapper">
+                                <a class="link-day d-flex">
+                                    <img class="d-block" width="20" src="./image/leftarrow.svg">
+                                    <div class="day-of-week" style="color: #0278CC;">21 July</div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-6 d-flex justify-content-end">
+                            <div class="wrapper">
+                                <a class="link-day d-flex justify-content-end">
+                                    <div class="day-of-week" style="color: #0278CC;">23 July</div>
+                                    <img class="d-block" width="20" src="./image/rightarrow.svg">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+					<div class="main-city-day">
+						<div class="card-body pt-5">
+							<div class="card-date">22 July 2021, Wednesday</div>
+							<div class="card-city">Amsterdam</div>
+							<div class="country">North Holland, Netherlands</div>
+							<div class="d-flex">									
+								<div class="card-temperature mt-3 text-center">72°-59°</div>
+								<img src="./image/cloudy_sun.svg">
+							</div>
+							<div class="row">
+                                <div class="col-12 d-flex justify-content-between">
+                                    <div class="wrapper d-flex">
+                                        <img class="" src="./image/umbrella.svg">
+										<div class="discription ms-1 mt-1">0%</div>
+                                    </div>
+                                    <div class="wrapper d-flex">
+                                        <img class="" src="./image/frame.svg">
+										<div class="discription ms-1 mt-1">11 km/h</div>
+                                    </div>
+                                    <div class="wrapper d-flex">
+                                        <img class="" src="./image/drop.svg">
+										<div class="discription ms-1 mt-1">73%</div>
+                                    </div>
+                                    <div class="wrapper d-flex">
+                                        <img class="" src="./image/wave.svg">
+										<div class="discription ms-1 mt-1">2.6 mm</div>
+                                    </div>
+                                    <div class="wrapper d-flex">
+                                        <img class="mt-1" src="./image/cloud.svg">
+										<div class="discription ms-1 mt-1">19</div>
+                                    </div>
+                                </div>
+                                <div class="wrapper mt-3 d-flex">
+                                    <div class="country">Sunrise 05:17</div>
+                                    <div class="country ms-5">Sunset 22:05</div>
+                                </div>
+							</div>
+						</div>
+					</div>
+                    <div class="graphics mt-4">
+                        <div id="chart-pressure" class="ct-chart"; style="height: 245px;">
+                            <div class="tittle text-center mt-3">Pressure</div>
+                        </div>
+                    </div>
+                    <div class="graphics mt-4">
+                        <div id="chart-visibility" class="ct-chart"; style="height: 245px;">
+                            <div class="tittle text-center mt-3">Visibility</div>
+                        </div>
+                    </div>
+                    <div class="graphics mt-4">
+                        <div id="chart-humidity" class="ct-chart"; style="height: 245px;">
+                            <div class="tittle text-center mt-3">Humidity</div>
+                        </div>
+                    </div>
+				</div>	
+				<div class="col-12 col-lg-12 col-xl-7">
+                    <div class="row mb-2  mt-1 mb-3 mb-xl-3 px-3 mt-5 mt-xl-5">
+                        <div class="moon-pase">
+                            <div class="row  justify-content-center">
+                                <div class="col-12">
+                                    <div class="wrapper my-3 d-flex justify-content-center">
+                                        <div class="col-12 col-md-3 col-xl-4">
+                                            <div class="tittle text-center">
+                                                Moon phase
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-md-4 col-lg-3 col-xl-4 mb-4 ">
+                                    <div class="wrapper mb-2 d-flex">
+                                        <div class="subtittle text-center">Phase:</div>
+                                        <div class="discription ms-2 text-center">First quarter</div>
+                                    </div>
+                                    <div class="wrapper d-flex">
+                                        <div class="subtittle text-center">Age:</div>
+                                        <div class="discription ms-2 text-center">6.7 days</div>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-md-4 col-lg-3 col-xl-4 mb-4">
+                                    <div class="wrapper mb-2 d-flex">
+                                        <div class="subtittle text-center">Illumination:</div>
+                                        <div class="discription ms-2 text-center">43%</div>
+                                    </div>
+                                    <div class="wrapper d-flex">
+                                        <div class="subtittle text-center">Distance:</div>
+                                        <div class="discription ms-2 text-center">375 km</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+					<div class="row mt-2 mt-xl-0">
+                        <div class="one-day-statistic mt-4">
+                            <div class="col-12">
+                                <div class="one-day-hour-statistic d-flex justify-content-between">
+                                    <div class="wrapper d-flex align-items-center">
+                                        <div class="time text-center">09:00</div>
+                                    </div>
+                                    <div class="wrapper">
+                                        <img class="d-block mx-auto" width="43" src="./image/cloudy_sun.svg">
+                                    </div>
+                                    <div class="wrapper d-flex align-items-center"> 
+                                        <div class="temperature text-center">22°F</div>
+                                    </div>
+                                    <div class="wrapper d-flex align-items-center"> 
+                                        <img class="d-block mx-auto" width="20" height="20" src="./image/umbrella_black.svg">
+                                        <div class="discription text-center">0%</div>
+                                    </div>
+                                    <div class="wrapper d-flex align-items-center"> 
+                                        <img class="d-block mx-auto" width="20" height="20" src="./image/frame_black.svg">
+                                        <div class="discription text-center">11 km/h</div>
+                                    </div>
+                                    <div class="wrapper d-flex align-items-center"> 
+                                        <img class="d-block mx-auto" width="20" height="20" src="./image/drop_black.svg">
+                                        <div class="discription text-center">73%</div>
+                                    </div>
+                                    <div class="wrapper d-flex align-items-center"> 
+                                        <img class="d-block mx-auto" width="20" height="20" src="./image/waves_black.svg">
+                                        <div class="discription text-center">2.6 mm</div>
+                                    </div>
+                                    <div class="wrapper d-flex align-items-center"> 
+                                        <img class="d-block mx-auto mt-1" width="25" height="25" src="./image/cloud_black.svg">
+                                        <div class="discription text-center">19</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="one-day-statistic mt-4">
+                            <div class="col-12">
+                                <div class="one-day-hour-statistic d-flex justify-content-between">
+                                    <div class="wrapper d-flex align-items-center">
+                                        <div class="time text-center">09:00</div>
+                                    </div>
+                                    <div class="wrapper">
+                                        <img class="d-block mx-auto" width="43" src="./image/cloudy_sun.svg">
+                                    </div>
+                                    <div class="wrapper d-flex align-items-center"> 
+                                        <div class="temperature text-center">22°F</div>
+                                    </div>
+                                    <div class="wrapper d-flex align-items-center"> 
+                                        <img class="d-block mx-auto" width="20" height="20" src="./image/umbrella_black.svg">
+                                        <div class="discription text-center">0%</div>
+                                    </div>
+                                    <div class="wrapper d-flex align-items-center"> 
+                                        <img class="d-block mx-auto" width="20" height="20" src="./image/frame_black.svg">
+                                        <div class="discription text-center">11 km/h</div>
+                                    </div>
+                                    <div class="wrapper d-flex align-items-center"> 
+                                        <img class="d-block mx-auto" width="20" height="20" src="./image/drop_black.svg">
+                                        <div class="discription text-center">73%</div>
+                                    </div>
+                                    <div class="wrapper d-flex align-items-center"> 
+                                        <img class="d-block mx-auto" width="20" height="20" src="./image/waves_black.svg">
+                                        <div class="discription text-center">2.6 mm</div>
+                                    </div>
+                                    <div class="wrapper d-flex align-items-center"> 
+                                        <img class="d-block mx-auto mt-1" width="25" height="25" src="./image/cloud_black.svg">
+                                        <div class="discription text-center">19</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="one-day-statistic mt-4">
+                            <div class="col-12">
+                                <div class="one-day-hour-statistic d-flex justify-content-between">
+                                    <div class="wrapper d-flex align-items-center">
+                                        <div class="time text-center">09:00</div>
+                                    </div>
+                                    <div class="wrapper">
+                                        <img class="d-block mx-auto" width="43" src="./image/cloudy_sun.svg">
+                                    </div>
+                                    <div class="wrapper d-flex align-items-center"> 
+                                        <div class="temperature text-center">22°F</div>
+                                    </div>
+                                    <div class="wrapper d-flex align-items-center"> 
+                                        <img class="d-block mx-auto" width="20" height="20" src="./image/umbrella_black.svg">
+                                        <div class="discription text-center">0%</div>
+                                    </div>
+                                    <div class="wrapper d-flex align-items-center"> 
+                                        <img class="d-block mx-auto" width="20" height="20" src="./image/frame_black.svg">
+                                        <div class="discription text-center">11 km/h</div>
+                                    </div>
+                                    <div class="wrapper d-flex align-items-center"> 
+                                        <img class="d-block mx-auto" width="20" height="20" src="./image/drop_black.svg">
+                                        <div class="discription text-center">73%</div>
+                                    </div>
+                                    <div class="wrapper d-flex align-items-center"> 
+                                        <img class="d-block mx-auto" width="20" height="20" src="./image/waves_black.svg">
+                                        <div class="discription text-center">2.6 mm</div>
+                                    </div>
+                                    <div class="wrapper d-flex align-items-center"> 
+                                        <img class="d-block mx-auto mt-1" width="25" height="25" src="./image/cloud_black.svg">
+                                        <div class="discription text-center">19</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="one-day-statistic mt-4">
+                            <div class="col-12">
+                                <div class="one-day-hour-statistic d-flex justify-content-between">
+                                    <div class="wrapper d-flex align-items-center">
+                                        <div class="time text-center">09:00</div>
+                                    </div>
+                                    <div class="wrapper">
+                                        <img class="d-block mx-auto" width="43" src="./image/cloudy_sun.svg">
+                                    </div>
+                                    <div class="wrapper d-flex align-items-center"> 
+                                        <div class="temperature text-center">22°F</div>
+                                    </div>
+                                    <div class="wrapper d-flex align-items-center"> 
+                                        <img class="d-block mx-auto" width="20" height="20" src="./image/umbrella_black.svg">
+                                        <div class="discription text-center">0%</div>
+                                    </div>
+                                    <div class="wrapper d-flex align-items-center"> 
+                                        <img class="d-block mx-auto" width="20" height="20" src="./image/frame_black.svg">
+                                        <div class="discription text-center">11 km/h</div>
+                                    </div>
+                                    <div class="wrapper d-flex align-items-center"> 
+                                        <img class="d-block mx-auto" width="20" height="20" src="./image/drop_black.svg">
+                                        <div class="discription text-center">73%</div>
+                                    </div>
+                                    <div class="wrapper d-flex align-items-center"> 
+                                        <img class="d-block mx-auto" width="20" height="20" src="./image/waves_black.svg">
+                                        <div class="discription text-center">2.6 mm</div>
+                                    </div>
+                                    <div class="wrapper d-flex align-items-center"> 
+                                        <img class="d-block mx-auto mt-1" width="25" height="25" src="./image/cloud_black.svg">
+                                        <div class="discription text-center">19</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="one-day-statistic mt-4">
+                            <div class="col-12">
+                                <div class="one-day-hour-statistic d-flex justify-content-between">
+                                    <div class="wrapper d-flex align-items-center">
+                                        <div class="time text-center">09:00</div>
+                                    </div>
+                                    <div class="wrapper">
+                                        <img class="d-block mx-auto" width="43" src="./image/cloudy_sun.svg">
+                                    </div>
+                                    <div class="wrapper d-flex align-items-center"> 
+                                        <div class="temperature text-center">22°F</div>
+                                    </div>
+                                    <div class="wrapper d-flex align-items-center"> 
+                                        <img class="d-block mx-auto" width="20" height="20" src="./image/umbrella_black.svg">
+                                        <div class="discription text-center">0%</div>
+                                    </div>
+                                    <div class="wrapper d-flex align-items-center"> 
+                                        <img class="d-block mx-auto" width="20" height="20" src="./image/frame_black.svg">
+                                        <div class="discription text-center">11 km/h</div>
+                                    </div>
+                                    <div class="wrapper d-flex align-items-center"> 
+                                        <img class="d-block mx-auto" width="20" height="20" src="./image/drop_black.svg">
+                                        <div class="discription text-center">73%</div>
+                                    </div>
+                                    <div class="wrapper d-flex align-items-center"> 
+                                        <img class="d-block mx-auto" width="20" height="20" src="./image/waves_black.svg">
+                                        <div class="discription text-center">2.6 mm</div>
+                                    </div>
+                                    <div class="wrapper d-flex align-items-center"> 
+                                        <img class="d-block mx-auto mt-1" width="25" height="25" src="./image/cloud_black.svg">
+                                        <div class="discription text-center">19</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="one-day-statistic mt-4">
+                            <div class="col-12">
+                                <div class="one-day-hour-statistic d-flex justify-content-between">
+                                    <div class="wrapper d-flex align-items-center">
+                                        <div class="time text-center">09:00</div>
+                                    </div>
+                                    <div class="wrapper">
+                                        <img class="d-block mx-auto" width="43" src="./image/cloudy_sun.svg">
+                                    </div>
+                                    <div class="wrapper d-flex align-items-center"> 
+                                        <div class="temperature text-center">22°F</div>
+                                    </div>
+                                    <div class="wrapper d-flex align-items-center"> 
+                                        <img class="d-block mx-auto" width="20" height="20" src="./image/umbrella_black.svg">
+                                        <div class="discription text-center">0%</div>
+                                    </div>
+                                    <div class="wrapper d-flex align-items-center"> 
+                                        <img class="d-block mx-auto" width="20" height="20" src="./image/frame_black.svg">
+                                        <div class="discription text-center">11 km/h</div>
+                                    </div>
+                                    <div class="wrapper d-flex align-items-center"> 
+                                        <img class="d-block mx-auto" width="20" height="20" src="./image/drop_black.svg">
+                                        <div class="discription text-center">73%</div>
+                                    </div>
+                                    <div class="wrapper d-flex align-items-center"> 
+                                        <img class="d-block mx-auto" width="20" height="20" src="./image/waves_black.svg">
+                                        <div class="discription text-center">2.6 mm</div>
+                                    </div>
+                                    <div class="wrapper d-flex align-items-center"> 
+                                        <img class="d-block mx-auto mt-1" width="25" height="25" src="./image/cloud_black.svg">
+                                        <div class="discription text-center">19</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="one-day-statistic mt-4">
+                            <div class="col-12">
+                                <div class="one-day-hour-statistic d-flex justify-content-between">
+                                    <div class="wrapper d-flex align-items-center">
+                                        <div class="time text-center">09:00</div>
+                                    </div>
+                                    <div class="wrapper">
+                                        <img class="d-block mx-auto" width="43" src="./image/cloudy_sun.svg">
+                                    </div>
+                                    <div class="wrapper d-flex align-items-center"> 
+                                        <div class="temperature text-center">22°F</div>
+                                    </div>
+                                    <div class="wrapper d-flex align-items-center"> 
+                                        <img class="d-block mx-auto" width="20" height="20" src="./image/umbrella_black.svg">
+                                        <div class="discription text-center">0%</div>
+                                    </div>
+                                    <div class="wrapper d-flex align-items-center"> 
+                                        <img class="d-block mx-auto" width="20" height="20" src="./image/frame_black.svg">
+                                        <div class="discription text-center">11 km/h</div>
+                                    </div>
+                                    <div class="wrapper d-flex align-items-center"> 
+                                        <img class="d-block mx-auto" width="20" height="20" src="./image/drop_black.svg">
+                                        <div class="discription text-center">73%</div>
+                                    </div>
+                                    <div class="wrapper d-flex align-items-center"> 
+                                        <img class="d-block mx-auto" width="20" height="20" src="./image/waves_black.svg">
+                                        <div class="discription text-center">2.6 mm</div>
+                                    </div>
+                                    <div class="wrapper d-flex align-items-center"> 
+                                        <img class="d-block mx-auto mt-1" width="25" height="25" src="./image/cloud_black.svg">
+                                        <div class="discription text-center">19</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="one-day-statistic mt-4">
+                            <div class="col-12">
+                                <div class="one-day-hour-statistic d-flex justify-content-between">
+                                    <div class="wrapper d-flex align-items-center">
+                                        <div class="time text-center">09:00</div>
+                                    </div>
+                                    <div class="wrapper">
+                                        <img class="d-block mx-auto" width="43" src="./image/cloudy_sun.svg">
+                                    </div>
+                                    <div class="wrapper d-flex align-items-center"> 
+                                        <div class="temperature text-center">22°F</div>
+                                    </div>
+                                    <div class="wrapper d-flex align-items-center"> 
+                                        <img class="d-block mx-auto" width="20" height="20" src="./image/umbrella_black.svg">
+                                        <div class="discription text-center">0%</div>
+                                    </div>
+                                    <div class="wrapper d-flex align-items-center"> 
+                                        <img class="d-block mx-auto" width="20" height="20" src="./image/frame_black.svg">
+                                        <div class="discription text-center">11 km/h</div>
+                                    </div>
+                                    <div class="wrapper d-flex align-items-center"> 
+                                        <img class="d-block mx-auto" width="20" height="20" src="./image/drop_black.svg">
+                                        <div class="discription text-center">73%</div>
+                                    </div>
+                                    <div class="wrapper d-flex align-items-center"> 
+                                        <img class="d-block mx-auto" width="20" height="20" src="./image/waves_black.svg">
+                                        <div class="discription text-center">2.6 mm</div>
+                                    </div>
+                                    <div class="wrapper d-flex align-items-center"> 
+                                        <img class="d-block mx-auto mt-1" width="25" height="25" src="./image/cloud_black.svg">
+                                        <div class="discription text-center">19</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="one-day-statistic mt-4">
+                            <div class="col-12">
+                                <div class="one-day-hour-statistic d-flex justify-content-between">
+                                    <div class="wrapper d-flex align-items-center">
+                                        <div class="time text-center">09:00</div>
+                                    </div>
+                                    <div class="wrapper">
+                                        <img class="d-block mx-auto" width="43" src="./image/cloudy_sun.svg">
+                                    </div>
+                                    <div class="wrapper d-flex align-items-center"> 
+                                        <div class="temperature text-center">22°F</div>
+                                    </div>
+                                    <div class="wrapper d-flex align-items-center"> 
+                                        <img class="d-block mx-auto" width="20" height="20" src="./image/umbrella_black.svg">
+                                        <div class="discription text-center">0%</div>
+                                    </div>
+                                    <div class="wrapper d-flex align-items-center"> 
+                                        <img class="d-block mx-auto" width="20" height="20" src="./image/frame_black.svg">
+                                        <div class="discription text-center">11 km/h</div>
+                                    </div>
+                                    <div class="wrapper d-flex align-items-center"> 
+                                        <img class="d-block mx-auto" width="20" height="20" src="./image/drop_black.svg">
+                                        <div class="discription text-center">73%</div>
+                                    </div>
+                                    <div class="wrapper d-flex align-items-center"> 
+                                        <img class="d-block mx-auto" width="20" height="20" src="./image/waves_black.svg">
+                                        <div class="discription text-center">2.6 mm</div>
+                                    </div>
+                                    <div class="wrapper d-flex align-items-center"> 
+                                        <img class="d-block mx-auto mt-1" width="25" height="25" src="./image/cloud_black.svg">
+                                        <div class="discription text-center">19</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+				</div>	
+			</div>
+		</div>
+	</main>
+    <footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="privacy-policy mt-5">
+						<div class="terms-of-use mt-3 text-center">
+							<div>Terms of use | Privacy Policy | Cookies</div>
+						</div>
+						<div class="terms-of-use mt-3 text-center">
+							<div>© wisemeteo 2021</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+
+    <!-- JavaScript Bundle with Popper -->
+    <script>
+        new Chartist.Bar('#chart-pressure', {
+        labels: ['00:00','06:00','09:00','12:00','15:00','18:00','21:00','00:00'],
+        series: [60, 40, 30, 60, 50, 40, 55, 40],
+        },
+        {
+        distributeSeries: true,
+        axisX: {
+            showGrid: false,
+            showLabel: true,
+        },
+        axisY: {
+            showGrid: false,
+            showLabel: false,
+            offset: 0
+        },
+        chartPadding: 40,
+        plugins: [
+            Chartist.plugins.ctPointLabels({
+                textAnchor: 'middle',
+            })
+        ],
+        },);
+        
+
+        new Chartist.Bar('#chart-visibility', {
+        labels: ['00:00','06:00','09:00','12:00','15:00','18:00','21:00','00:00'],
+        series: [60, 40, 30, 60, 50, 40, 55, 40],
+        },
+        {
+        distributeSeries: true,
+        axisX: {
+            showGrid: false,
+            showLabel: true,
+        },
+        axisY: {
+            showGrid: false,
+            showLabel: false,
+            offset: 0
+        },
+        chartPadding: 40,
+        plugins: [
+            Chartist.plugins.ctPointLabels({
+                textAnchor: 'middle'
+            })
+        ],
+        },);
+
+        new Chartist.Bar('#chart-humidity', {
+        labels: ['00:00','06:00','09:00','12:00','15:00','18:00','21:00','00:00'],
+        series: [60, 40, 30, 60, 50, 40, 55, 40],
+        },
+        {
+        distributeSeries: true,
+        axisX: {
+            showGrid: false,
+            showLabel: true,
+        },
+        axisY: {
+            showGrid: false,
+            showLabel: false,
+            offset: 0
+        },
+        chartPadding: 40,
+        plugins: [
+            Chartist.plugins.ctPointLabels({
+                textAnchor: 'middle'
+            })
+        ],
+        },);
+        
+
+    </script>
+
+</body>
+</html>

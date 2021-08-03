@@ -1,0 +1,590 @@
+button {
+    outline: none;
+    border: none;
+}
+
+.navbar-toggler {
+    outline: none;
+    border: none;
+}
+
+.city-weather-card {
+    background: rgba(255, 255, 255, 0.4);
+    border: 0.5px solid #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 20px;
+    padding: 42px;
+}
+
+.city-weather-card .discription {
+    color: #073170;
+    text-align: center;
+    font-weight: 600;
+}
+
+.city-weather-card .wrapper {
+    overflow-x: auto;
+    font-size: 0;
+    display: inline-block;
+}
+
+.main {
+    margin-top: 100px;
+}
+
+@media (max-width: 1199px) {
+
+    .main {
+        margin-top: 30px;
+    }
+}
+
+
+.envelope {
+    margin-top: 100px;
+}
+
+@media (max-width: 992px) {
+
+    .envelope {
+        margin-top: 50px;
+    }
+}
+
+.city-link {
+    margin-top: 100px;
+}
+
+.main-city-day {
+    background: linear-gradient(135deg, #1E92E6 0%, #073170 100%);
+    box-shadow: 0px 0px 40px rgba(6, 58, 124, 0.59);
+    border-radius: 20px;
+    color: #FFFFFF;
+    padding: 14px;
+}
+
+@media (min-width: 320px) and (max-width:405px) {
+    .main-city-day .card-city {
+        font-size: 24px !important;
+    }
+
+    .main-city-day .card-temperature {
+        font-size: 32px !important;
+        margin-left: 16px;
+    }
+    
+}
+
+@media (min-width: 320px) and (max-width:450px) {
+    .city-weather-card {
+        background: rgba(255, 255, 255, 0.4);
+        border: 0.5px solid #FFFFFF;
+        box-sizing: border-box;
+        border-radius: 20px;
+        padding: 10px;
+    }
+    
+}
+
+@media (min-width: 320px) and (max-width:479px) {
+    
+    .city-weather-card .direction {
+        font-size: 10px;
+    }
+    
+}
+
+@media (min-width: 768px) {
+
+    .monthly-margin {
+        margin-top: 70px;
+    }
+}
+
+.card-body .card-date{
+    color: #fff;
+    text-align: start;
+}
+
+.card-body .card-temperature  {
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 78px;
+} 
+
+.hour-forecast {
+    width: 92px;
+    background: rgba(255, 255, 255, 0.42); 
+    border-top: 1px solid #FFFFFF;
+    border-bottom: 1px solid #FFFFFF;
+    border-left: 0.1px solid #fff;
+    border-right: 0.1px solid #fff;
+    box-sizing: border-box;
+    font-size: 16px;
+    display: inline-block;
+}
+
+@media (min-width: 768px) {
+    .hour-forecast {
+        width: 11.1111111111111% ;
+    }
+}
+
+.hour-forecast:first-child {
+    border-radius: 20px 0px 0px 0px;
+}
+
+.hour-forecast .temperature  {
+    color: #073170;
+    text-align: center;
+}
+
+.card-day-of-week{
+    background: rgba(255, 255, 255, 0.42); 
+    border: 0.5px solid #FFFFFF; 
+    box-sizing: border-box; 
+    border-radius: 20px;
+    text-align: center;
+    color: #073170;
+}
+
+.card-day-of-week:hover{
+    background: #0278CC; 
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.card-day-of-week:active{
+    background: #073170; 
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.monthly-card-day-of-week {
+    background: linear-gradient(135deg, #1E92E6 0%, #073170 100%);
+    color: #FFFFFF;
+    width: 92px;
+}
+
+.previosly-watched {
+    background:#FFFFFF;
+    border: 0.5px solid #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 14px 14px 14px 14px;
+}
+
+.previosly-watched:hover {
+    background: #0278CC;
+    cursor: pointer;
+    color: #FFFFFF;
+}
+
+.previosly-watched:active {
+    background: #073170;
+    cursor: pointer;
+    color: #FFFFFF;
+}
+
+.link {
+    text-decoration: none;
+    color: #000;
+    cursor:pointer;
+}
+
+.link:active {
+    color: #073170;
+}
+
+
+@media (max-width: 991px) {
+    .previosly-watched {
+        margin-top: 12px;
+    }
+
+    .city-link {
+        margin-top: 46px;
+    }
+
+    .hour-forecast {
+        margin-top: 16px;
+    }
+}
+
+@media (min-width: 768px) and (max-width:991px) {
+    .previosly-watched .city-name, .temperature {
+        font-size: 16px;
+    }
+
+    .previosly-watched .country {
+        font-size: 12px;
+    }
+}
+
+.dayly-statistic {
+    font-size: 0;
+    white-space: nowrap;
+}
+
+/* @media (max-width: 767px){ */
+    .dayly-statistic {
+        border-radius: 10% 10% 0% 0%;
+    }
+
+    .dayly-statistic .wrapper {
+        overflow-x: auto;
+        font-size: 0;
+        white-space: nowrap;
+    }
+/* } */
+
+.card-news-forecast {
+    background: rgba(255, 255, 255, 0.5); 
+    border-radius: 14px 14px 14px 14px;
+    padding: 60px 40px;
+    cursor: pointer;
+}
+
+.card-news-forecast .link {
+    text-decoration: underline;
+}
+
+.card-news-forecast:active {
+    background: rgba(2, 120, 204, 0.5);
+    border: 2px solid #FFFFFF;
+    box-sizing: border-box;
+}
+
+
+
+@media (max-width: 991px) {
+    .card-news-forecast {
+        margin-top: 24px;
+    }
+}
+
+.card-news-forecast .tittle {
+    background: #1E92E5;
+    background: -webkit-linear-gradient(to right, #1E92E5 0%, #073170 100%);
+    background: -moz-linear-gradient(to right, #1E92E5 0%, #073170 100%);
+    background: linear-gradient(to right, #1E92E5 0%, #073170 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: #1E92E5;
+    -moz-text-fill-color: transparent;
+    -moz-background-clip: text;
+    text-align: center;
+    font-weight: 600;
+}
+
+.card-news-forecast .discription {
+    text-align: center;
+}
+
+.card-news-forecast .link {
+    color: #000;
+    font-weight: 600;
+}
+
+.card-news-forecast .link:hover {
+    color: #0278CC;
+}
+
+.card-news-forecast .link:active {
+    color: #073170;
+}
+
+@media (max-width: 767px){
+
+    .calendar {
+        overflow-x: auto;
+        font-size: 0;
+        white-space: nowrap;
+    }
+
+    /* .hourly-card-day-of-week {
+        border-radius: 0px 0px 20px 20px;
+        color: #000;
+        background: #B5C4D1;
+        text-align: center;
+        width: 97px;
+        box-sizing: border-box;
+        display: inline-block;
+    } */
+}
+
+/* @media (min-width: 768px){
+    .hourly-card-day-of-week {
+        width: 97px !important;
+    }
+} */
+
+/* @media (min-width: 992px){
+    .hourly-card-day-of-week {
+        width: 86px !important;
+        white-space:pre-line;
+    }
+} */
+
+.wrapper-day {
+    width: 80% !important;
+}
+
+@media (min-width: 1200px){
+    .hourly-card-day-of-week {
+        width: 104px !important;
+        white-space:nowrap;
+    }
+}
+
+@media (min-width: 1400px){
+    .hourly-card-day-of-week {
+        width: 120px !important;
+       
+    }
+}
+
+
+
+.calendar-nav {
+    position: relative;
+}
+
+.calendar-nav.active:before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 20px;
+    background-color: #0278CC;
+    color: #073170;
+    display: block;
+    position: absolute;
+    left: 48%;
+    bottom: -14px;
+}
+
+.one-day-hour-statistic {
+    background: rgba(255, 255, 255, 0.5);
+    border: 0.5px solid #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 14px 14px 14px 14px;
+    padding: 24px 42px;
+}
+
+@media (min-width: 320px) and (max-width:455px){
+    .one-day-hour-statistic {
+        overflow-x: auto;
+        font-size: 0;
+        white-space: nowrap;
+    }
+
+    .one-day-hour-statistic .wrapper {
+       margin-left: 10px;
+    }
+
+    .card-body .col-12 {
+        flex-wrap: wrap;
+        justify-content: start !important;
+    }
+
+    .card-body .col-12 .wrapper {
+        margin-left: 5px;
+    }
+
+    .card-body .wrapper .country {
+        font-size: 14px !important;
+    }
+}
+
+@media (min-width: 320px) and (max-width:445px){
+
+    .moon-pase .tittle {
+        font-size: 16px !important;
+    }
+
+    .moon-pase .wrapper > * {
+        font-size: 12px !important;
+    }
+
+    .button-graph {
+        font-size: 12px !important;
+    }
+}
+
+@media (min-width: 320px) and (max-width:355px){
+
+
+    .moon-pase .tittle {
+        font-size: 16px !important;
+    }
+
+    .moon-pase .wrapper > * {
+        font-size: 10px !important;
+    }
+
+    .button-graph {
+        font-size: 12px !important;
+    }
+}
+
+
+
+@media (max-width: 559px){
+
+    .one-day-hour-statistic {
+        padding: 24px 0px;
+    }
+    
+    .one-day-hour-statistic .discription {
+        font-size: 11px;
+    }
+
+    /* .scroll {
+        overflow-x: auto !important;
+        font-size: 0 !important;
+        display: inline-flex;
+        
+    } */
+}
+
+@media (max-width: 766px){
+
+    .one-day-hour-statistic {
+        padding: 24px 20px;
+    }
+    
+    .one-day-hour-statistic .discription {
+        font-size: 12px;
+    }
+}
+
+@media (min-width: 767px){
+
+    .one-day-hour-statistic {
+        padding: 24px 42px;
+    }
+    
+    .one-day-hour-statistic .discription {
+        font-size: 16px;
+    }
+}
+
+.one-day-hour-statistic .temperature {
+    color:#073170;
+    font-size: 16px;
+}
+
+.moon-pase {
+    background-color: transparent;
+    border: 2px solid #B5C4D1;
+    box-sizing: border-box;
+    border-radius: 20px;
+}
+
+.link-day {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.button-graph {
+    background-color: #FFFFFF !important;
+    border-radius: 14px !important;
+    color: #073170 !important;
+    border: #073170 solid 2px !important;
+}
+
+.button-graph:hover {
+    color: #0278CC !important;
+    border: #0278CC solid 2px !important;
+    cursor: pointer;
+}
+
+.button-graph.active {
+    color: #FFFFFF !important;
+    border: #073170 solid 2px !important;
+    background-color: #073170 !important;
+}
+
+@media (min-width: 320px) and (max-width:445px){
+
+    .button-graph {
+        font-size: 8px !important;
+        box-sizing: border-box;
+    }
+
+    .calendar-nav .date {
+        font-size: 18px !important;
+    }
+
+    .nav-link {
+        display: block;
+        padding: 10px;
+    }
+}
+
+.button-temperature {
+    bottom: 10px;
+    left: 25%;
+}
+
+.button-wind {
+    bottom: 10px;
+    left: 44%;
+}
+
+.button-precipitation {
+    bottom: 10px;
+    left: 56%;
+}
+
+.linear {
+    color: #0278CC !important;
+    border: #0278CC solid 2px !important;
+    border-radius: 14px !important;
+    background-color: transparent !important;
+}
+
+.linear:hover {
+    color: #FFFFFF !important;
+    border: #0278CC solid 2px !important;
+    background-color: #0278CC !important;
+}
+
+.linear.active {
+    color: #FFFFFF !important;
+    border: #0278CC solid 2px !important;
+    background-color: #0278CC !important;
+}
+
+.nav-tabs {
+    border-bottom: none;
+}
+
+
+.hourly-card-day-of-week {
+    border-radius: 0px 0px 20px 20px;
+    color: #000;
+    background: #B5C4D1;
+    text-align: center;
+    width: 120px;
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+.hourly-card-day-of-week:hover {
+    color: #fff;
+    background: #0278CC;
+}
+
+.hourly-card-day-of-week:active {
+    color: #fff;
+    background: #073170;
+}
+
+.card-day-active {
+    background-color: #073170 ;
+    color: #FFFFFF ;
+}
+
+.graphics {
+    position: relative;
+    height: 260px;
+}

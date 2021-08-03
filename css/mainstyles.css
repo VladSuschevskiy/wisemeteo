@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&subset=cyrillic');
+
+body {
+    font-family: 'Montserrat'; 
+    position: relative;
+    max-width: 1920px;
+    background: radial-gradient(42.83% 69.34% at -0.81% 1.45%,rgba(0, 56, 255, 0.145) 0%,rgba(255, 255, 255, 0) 100%),
+    radial-gradient(84.51% 58.01% at 52.94% 68.26%, rgba(0, 56, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%),
+    radial-gradient(44.46% 24.21% at 60.78% 25.83%, rgba(0, 28, 101, 0.4851) 0%, rgba(129, 164, 255, 0.63) 0.01%, rgba(255, 255, 255, 0) 100%), #FFFFFF;   
+    word-wrap: break-word; 
+}
+
+* {
+    box-sizing: border-box;
+    word-wrap: break-word; 
+    
+}
+
+.gradient{
+    background: #1E92E5;
+    background: -webkit-linear-gradient(to right, #1E92E5 0%, #073170 100%);
+    background: -moz-linear-gradient(to right, #1E92E5 0%, #073170 100%);
+    background: linear-gradient(to right, #1E92E5 0%, #073170 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: #1E92E5;
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
+}
+
+h1 {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 48px;
+}
+
+@media (max-width: 769px) {
+    h1 {
+        font-size: 32px;;
+    }
+}
+
+h2,
+.card-city {
+    font-style: normal;
+    font-size:  36px;
+    font-weight: 600;
+}
+
+
+h3 {
+    font-style: normal;
+    font-weight: bold;
+    font-weight: 600;
+    font-size: 24px;
+}
+
+h4,
+.temperature,
+.city-name,
+.tittle,
+.logo,
+.date {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+}
+
+h5,
+.link,
+.country,
+.discription,
+.day-of-week,
+.min-max-t,
+.subtittle {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.subtittle {
+    font-weight: 600;
+}
+
+h6 {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+p,
+.speed,
+.direction,
+.time,
+.card-date,
+.terms-of-use {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    text-align: center;
+}
+
+.logo {
+    color: #073170
+}
+
+.tittle h1 {
+    color: #000;
+}
+
+.day-screen, .city-screen, .news-screen {
+    margin-top: 100px;
+}
+

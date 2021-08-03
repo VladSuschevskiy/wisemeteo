@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="stylesheet" href="./css/chartist.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="css/mainstyles.css" rel='stylesheet'>
+	<link href="css/header.css" rel='stylesheet'>
+	<link href="css/main.css" rel='stylesheet'>
+	<link href="css/footer.css" rel='stylesheet'>
+	<link href="css/navigation.css" rel="stylesheet">
+    <link href="css/chartist.css" rel="stylesheet">
+
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> 
+
+	
+	<script src="./chartist.js"></script>
+	<script src="./chartist-plugin-pointlabels.min.js"></script>
+	
+    
+    <script src="./app.js"></script>
+</head>
+
+<body>
+	<header class="pt-1">
+		<div class="header-mobile">
+			<div class="container">
+				<div class="row">
+					<div class="col-6">
+						<a class="logo navbar-brand " href="#">wisemeteo</a>
+					</div>
+					<div class="col-6">
+						<div class="m-filter justify-content-end">
+							<div class="dropdown">
+								<a class="nav-link dropdown-toggle d-flex" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								En
+								<div class="characters ms-1"></div>
+								</a>
+								<ul class="dropdown-menu mx-auto " aria-labelledby="navbarDropdown">
+									<li><a class="dropdown-item item-active" id="dropdown-item-color" href="#">En</a></li>
+									<li><a class="dropdown-item" id="dropdown-item-color" href="#">De</a></li>
+									<li><a class="dropdown-item" id="dropdown-item-color" href="#">Рус</a></li>
+									<li><a class="dropdown-item" id="dropdown-item-color" href="#">Укр</a></li>
+								</ul>
+							</div>
+							<div class="dropdown">
+								<a class="nav-link dropdown-toggle d-flex" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								°F
+								<div class="characters ms-1"></div>
+								</a>
+								<ul class="dropdown-menu mx-auto" aria-labelledby="navbarDropdown">
+									<li><a class="dropdown-item" id="dropdown-item-color" href="#">°C</a></li>
+									<li><a class="dropdown-item item-active" id="dropdown-item-color" href="#">°F</a></li>
+								</ul>
+							</div>
+							<div class="dropdown">
+								<a class="nav-link dropdown-toggle d-flex" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								M
+								<div class="characters ms-1"></div>
+								</a>
+								<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+									<li><a class="dropdown-item" id="dropdown-item-color" href="#">KM</a></li>
+									<li><a class="dropdown-item item-active" id="dropdown-item-color" href="#">M</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col-12">
+						<form class="search position-relative mb-4">
+							<input class="form-control" id="form-custom" type="search" placeholder="City, region or country" aria-label="City, region or country" autocomplete="off">
+							<div id="dr" class="search-subcontainer">
+								<div class="country ms-4 mt-4">Texas City, Texas, United States</div>
+								<div class="country ms-4 mt-2">Texas</div>
+							</div>
+							<button class=" search-icon " id="btn-search-icon" type="submit"></button>
+						</form>
+					</div>
+					<div class="m-period d-flex">
+						<ul class="navbar-nav d-flex" style="font-size: 16px; flex-direction: row;" >
+							<li class="nav-item mx-2">
+								<a class="nav-day-of-week nav-link active" id="nav-link-black" aria-current="page" href="#">Today</a>
+							</li>
+							<li class="nav-item mx-2">
+								<a class="nav-day-of-week nav-link " id="nav-link-black"  href="#">Tommorow</a>
+								<div class="style"></div>
+							</li>
+							<li class="nav-item mx-2">
+								<a class="nav-day-of-week nav-link " id="nav-link-black" href="#">One week</a>
+							</li>
+							<li class="nav-item mx-2">
+								<a class="nav-day-of-week nav-link "  id="nav-link-black" href="#">Two weeks</a>
+							</li>
+							<li class="nav-item mx-2">
+								<a class="nav-day-of-week nav-link "  id="nav-link-black" href="#">Month</a>
+							</li>
+							<li class="nav-item mx-2">
+								<a class="nav-day-of-week nav-link "  id="nav-link-black" href="#">Three months</a>
+							</li>
+							<li class="nav-item mx-2">
+								<a class="nav-day-of-week nav-link "  id="nav-link-black" href="#">Half year</a>
+							</li>
+							<li class="nav-item mx-2">
+								<a class="nav-day-of-week nav-link "  id="nav-link-black" href="#">Year</a>
+							</li>
+						</ul>
+						<a class="countries py-2" style="font-size: 16px;" aria-current="page" href="#"><img class="countries__icon" src="./image/countries.svg "> Countries</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="header-desktop">
+			<div class="container">
+				<div class="row">
+					<div class="col-2">
+						<a class="logo navbar-brand " href="#">wisemeteo</a>
+					</div>
+					<div class="col-8">
+						<div class="d-flex">
+							<div class="nav-item">
+								<a class="nav-link fs-6 countries " aria-current="page" href="#"><img class="countries__icon" src="./image/countries.svg "> Countries</a>
+							</div>
+							<div class="w-100 nav-item ps-5">
+								<form class="search position-relative">
+									<input class="form-control me-2" id="form-custom" type="search" placeholder="City, region or country" aria-label="City, region or country" autocomplete="off">
+									<div id="dr" class="search-subcontainer">
+										<div class="country ms-4 mt-4">Texas City, Texas, United States</div>
+										<div class="country ms-4 mt-2">Texas</div>
+									</div>
+									<button class=" search-icon " id="btn-search-icon" type="submit"></button>
+								</form>
+							</div>
+						</div>
+					</div>
+					<div class="col-2">
+						<div class="d-flex">
+							<div class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle d-flex " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								En
+								<div class="characters ms-1"></div>	
+								</a>
+								<ul class="dropdown-menu mx-auto menu " aria-labelledby="navbarDropdown">
+									<li><a class="dropdown-item item-active" id="dropdown-item-color" href="#">En</a></li>
+									<li><a class="dropdown-item" id="dropdown-item-color" href="#">De</a></li>
+									<li><a class="dropdown-item" id="dropdown-item-color" href="#">Рус</a></li>
+									<li><a class="dropdown-item" id="dropdown-item-color" href="#">Укр</a></li>
+								</ul>
+							</div>
+							<div class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle d-flex" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								°F
+								<div class="characters ms-1"></div>
+								</a>
+								<ul class="dropdown-menu mx-auto menu" aria-labelledby="navbarDropdown">
+									<li><a class="dropdown-item " id="dropdown-item-color" href="#">°C</a></li>
+									<li><a class="dropdown-item item-active" id="dropdown-item-color" href="#">°F</a></li>
+								</ul>
+							</div>
+							<div class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle d-flex" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								M
+								<div class="characters ms-1"></div>
+								</a>
+								<ul class="dropdown-menu menu" aria-labelledby="navbarDropdown">
+									<li><a class="dropdown-item" id="dropdown-item-color" href="#">KM</a></li>
+									<li><a class="dropdown-item item-active" id="dropdown-item-color" href="#">M</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>	
+				<nav class="navbar navbar-expand-lg bg-transparent" >
+					<div class="col-12 block-center">
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul class="navbar-nav mx-auto ps-5" >
+								<li class="nav-item mx-1" >
+									<a class="nav-day-of-week nav-link active" id="nav-link-black" aria-current="page" href="#">Today</a>
+								</li>
+								<li class="nav-item mx-1 ">
+									<a class="nav-day-of-week nav-link" id="nav-link-black"  href="#">Tommorow</a>
+								</li>
+								<li class="nav-item mx-1 ">
+									<a class="nav-day-of-week nav-link" id="nav-link-black" href="#">One week</a>
+								</li>
+								<li class="nav-item mx-1">
+									<a class="nav-day-of-week nav-link"  id="nav-link-black" href="#">Two weeks</a>
+								</li>
+								<li class="nav-item mx-1">
+									<a class="nav-day-of-week nav-link"  id="nav-link-black" href="#">Month</a>
+								</li>
+								<li class="nav-item mx-1">
+									<a class="nav-day-of-week nav-link"  id="nav-link-black" href="#">Three months</a>
+								</li>
+								<li class="nav-item mx-1">
+									<a class="nav-day-of-week nav-link"  id="nav-link-black" href="#">Half year</a>
+								</li>
+								<li class="nav-item mx-1">
+									<a class="nav-day-of-week nav-link"  id="nav-link-black" href="#">Year</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+			</div>
+		</div>
+	</header>
+	<main>
+		<div class="envelope">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-center">
+                        <div class="mx-auto">
+                            <div class="tittle text-center ">
+                                <h1>Autumn 2021 - weather forecast in <br> <span class="gradient">Amsterdam city</span></h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-7 col-lg-6 col-xl-5 col-xxl-4 my-4">
+                        <div class="city-weather-card">
+                            <div class="row justify-content-end mb-2">
+                                <div class="col-3">
+                                    <div class="">
+                                        <div class="direction text-center" style="font-weight: 600;">2021</div>
+                                        <div class="direction text-center">Autumn</div>
+                                    </div>
+                                </div> 
+                                <div class="col-3">
+                                    <div class="">
+                                        <div class="direction text-center" style="font-weight: 600;">2021</div>
+                                        <div class="direction text-center">Autumn</div>
+                                    </div>
+                                </div> 
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-6">
+                                    <div class="">
+                                        <div class="direction text-start">Average temperature</div>
+                                    </div>
+                                </div> 
+                                <div class="col-3">
+                                    <div class="">
+                                        <div class="discription">55° F</div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="">
+                                        <div class="discription">55° F</div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="">
+                                        <div class="direction text-start">Number of days with precipitation</div>
+                                    </div>
+                                </div> 
+                                <div class="col-3">
+                                    <div class="">
+                                        <div class="discription">31</div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="">
+                                        <div class="discription">39</div>
+                                        
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-xl-7 col-xxl-8 my-5">    
+                        <div class="discription">
+                            Predicted autumn 2021 will be mainly cool and sunny. Days will gradually become shorter, which is typical for the season. Comparing to autumn 2020, autumn 2021 will be less dry. On average, heavy precipitation is not expected during the season. Average temperature of this fall 2021 - 55 °F which makes the season same as autumn 2020. Autumn's 2021 number of days with temperature over 57 °F will be 39 days, less then 54 °F - 31 days. Daylight hours on average will decrease down to 11 hours. The longest day will come on 1st September 2021 and last for 13 h 37 min. The shortest will be on 30th November 2021, its duration will be 8 h 6 min.
+                        </div>  
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-lg-12 col-xl-9  my-5">
+                        <div class="subtittle text-center">September 2021 will open the season classically</div>    
+                        <div class="discription mt-2">
+                            Long awaited first month of the autumn - seasons change time. September 2021 will show itself as typical autumn month. The first true typical for the season temperature is predicted on 8th September, which is later compared to September 2020. The average temperature will be 63 °F. By the way, previous September was similarly favorable. Average temperature of September 2020 fluctuated at 63 °F. Precipitation is predicted to be long-term on 4th - 24th September period.
+                        </div>  
+                    </div>
+                    <div class="col-8 col-lg-4 col-xl-3 my-4 ">
+                        <div class="city-weather-card">
+                            <div class="row mb-2">
+                                <div class="col-6">
+                                    <div class="mt-2">
+                                        <div class="direction">Longest day</div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="">
+                                        <div class="discription">13:37</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="mt-2">
+                                        <div class="direction">Shortest day</div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="pb-3">
+                                        <div class="discription">08:06</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-9  col-lg-7 col-xl-6 col-xxl-5">
+                        <div class="city-weather-card scroll mt-5">
+                            <div class="wrapper d-flex">
+								<div class="col-7">
+									
+									<div class="direction text-start mt-5">Warmest day</div>
+									<div class="direction text-start mt-3">Coldest day</div>
+									<div class="direction text-start mt-3">Average temperature</div>
+									<div class="direction text-start mt-3">Number of days with precipitation</div>
+									<div class="direction text-start mt-3">Average daylight hours</div>
+								</div>
+								<div class="col-4">
+									<div class="direction text-center" style="font-weight: 600;">September</div>
+									<div class="discription text-center mt-4">55° F</div>
+									<div class="discription text-center mt-2">55° F</div>
+									<div class="discription text-center mt-2">55° F</div>
+									<div class="discription text-center mt-2">11</div>
+									<div class="discription text-center mt-2">55° F</div>
+								</div>
+								<div class="col-4">
+									<div class="direction text-center" style="font-weight: 600;">September</div>
+									<div class="discription text-center mt-4">55° F</div>
+									<div class="discription text-center mt-2">55° F</div>
+									<div class="discription text-center mt-2">55° F</div>
+									<div class="discription text-center mt-2">11</div>
+									<div class="discription text-center mt-2">55° F</div>
+								</div>
+								<div class="col-4">
+									<div class="direction text-center" style="font-weight: 600;">September</div>
+									<div class="discription text-center mt-4">55° F</div>
+									<div class="discription text-center mt-2">55° F</div>
+									<div class="discription text-center mt-2">55° F</div>
+									<div class="discription text-center mt-2">11</div>
+									<div class="discription text-center mt-2">55° F</div>
+								</div>
+								<div class="col-4">
+									<div class="direction text-center" style="font-weight: 600;">September</div>
+									<div class="discription text-center mt-4">55° F</div>
+									<div class="discription text-center mt-2">55° F</div>
+									<div class="discription text-center mt-2">55° F</div>
+									<div class="discription text-center mt-2">11</div>
+									<div class="discription text-center mt-2">55° F</div>
+								</div>
+								<div class="col-4">
+									<div class="direction text-center" style="font-weight: 600;">September</div>
+									<div class="discription text-center mt-4">55° F</div>
+									<div class="discription text-center mt-2">55° F</div>
+									<div class="discription text-center mt-2">55° F</div>
+									<div class="discription text-center mt-2">11</div>
+									<div class="discription text-center mt-2">55° F</div>
+								</div>
+								<div class="col-4">
+									<div class="direction text-center" style="font-weight: 600;">September</div>
+									<div class="discription text-center mt-4">55° F</div>
+									<div class="discription text-center mt-2">55° F</div>
+									<div class="discription text-center mt-2">55° F</div>
+									<div class="discription text-center mt-2">11</div>
+									<div class="discription text-center mt-2">55° F</div>
+								</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-12  col-lg-12 col-xl-6 col-xxl-7">
+                        <div class="subtittle text-center mt-4 mb-4">October 2021 will be very autumn</div>    
+                        <div class="discription">
+                            Temperature background of the month will be high and predicted. Before 1st October the temperature will range from 45 °F to 59 °F. At the beginning of the month expected warm, dry weather. On some days the thermometer will go up to 68 °F, which nevertheless is higher compared to October 2020. Mid season appears to be with little precipitation, most of them will occur around 3rd - 29th October.
+                        </div>
+                        <div class="subtittle text-center mt-4 mb-4">November 2021 will be warm</div>    
+                        <div class="discription">
+                            Average temperature November 2021 is 50 °F. The warmest day of the month will be on 2nd November with temperature of 61 °F, coldest day is on 26th November with average daily temperature around 37 °F. At the same time forecast for November 2021 is more favorable the same month of 2020 season. Precipitation in November will be heavy. According to the forecast the number of precipitation days is 12, mainly during the period 11th - 29th November.
+                        </div>  
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <div class="envelope">
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+						<div class="d-flex justify-content-center text-center mb-lg-4"> 
+							<h1>Seasonal weather <span class="gradient"> forecast</span></h1>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12 col-md-12 col-lg-4">
+						<div class="card-news-forecast">
+							<div class=" tittle d-flex justify-content-center">
+								What the weather will
+								be like in summer 2021
+								in Toronto?
+							</div>
+							<div class="discription d-flex justify-content-center mt-4">
+								Summer in 2021 year is expected to
+								be rainy and mostly cold. 
+								Temperature in summer will 
+								fluctuate from minimum at 48 °F on 
+								1st June to its maximum at 86 °F on 
+								7th August ...
+							</div>
+							<a class="link d-flex justify-content-center mt-4" href="#">Read forecast
+							</a>
+						</div>
+					</div>
+					<div class="col-12 col-md-12 col-lg-4">
+						<div class="card-news-forecast">
+							<div class=" tittle d-flex justify-content-center">
+								What the weather will
+								be like in summer 2021
+								in Toronto?
+							</div>
+							<div class="discription d-flex justify-content-center mt-4">
+								Summer in 2021 year is expected to
+								be rainy and mostly cold. 
+								Temperature in summer will 
+								fluctuate from minimum at 48 °F on 
+								1st June to its maximum at 86 °F on 
+								7th August ...
+							</div>
+							<a class="link d-flex justify-content-center mt-4" href="#">Read forecast
+							</a>
+						</div>
+					</div>
+					<div class="col-12 col-md-12 col-lg-4">
+						<div class="card-news-forecast">
+							<div class=" tittle d-flex justify-content-center">
+								What the weather will
+								be like in summer 2021
+								in Toronto?
+							</div>
+							<div class="discription d-flex justify-content-center mt-4">
+								Summer in 2021 year is expected to
+								be rainy and mostly cold. 
+								Temperature in summer will 
+								fluctuate from minimum at 48 °F on 
+								1st June to its maximum at 86 °F on 
+								7th August ...
+							</div>
+							<a class="link d-flex justify-content-center mt-4" href="#">Read forecast
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+    <footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="privacy-policy mt-5">
+						<div class="terms-of-use mt-3 text-center">
+							<div>Terms of use | Privacy Policy | Cookies</div>
+						</div>
+						<div class="terms-of-use mt-3 text-center">
+							<div>© wisemeteo 2021</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+</body>
+</html>

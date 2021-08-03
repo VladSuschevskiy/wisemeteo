@@ -1,0 +1,60 @@
+
+
+.header-desktop {
+    display: none;
+}
+
+@media (min-width: 1200px) {
+    .header-mobile {
+        display: none;
+    }
+
+    .header-desktop {
+        display: block;
+    }
+}
+
+
+.countries {
+    display: flex;
+    flex-wrap: nowrap;
+    text-decoration: none;
+}
+
+.countries__icon
+{
+    margin-right: 0.375em; margin-bottom: 3px; height: 24px; width: 24px;
+}
+
+.search {
+    width: 100%;
+    display: flex;
+}
+
+@media (min-width: 1200px) {
+    .search {
+        max-width: 600px;
+    }
+}
+
+.m-period {
+    white-space: nowrap;
+    overflow-x: auto;
+}
+
+.m-period > * {
+    display: inline-block;
+    font-size: 0;
+    white-space: nowrap;
+}
+
+
+.m-filter {
+    display: flex;
+    margin: 0 -12px;
+}
+
+.burger {
+    border: none;
+    outline: none;
+}

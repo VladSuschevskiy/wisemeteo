@@ -1,0 +1,95 @@
+
+.graphics {
+    background: rgba(255, 255, 255, 0.5);
+    border: 0.5px solid #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 20px;
+}
+
+.graphics .tittle {
+    color: #073170;
+}
+
+/* Для переопределения стиля столбчатого графика. */
+.ct-series .ct-bar, .ct-series .ct-line, .ct-series .ct-point, .ct-series .ct-slice-donut  {
+    stroke: #0278CC !important;
+    stroke-width: 40px;
+}
+
+.ct-labels {
+    font-weight: 600;
+    color: #000 !important;
+}
+
+.ct-vertical ~ .ct-vertical {
+    stroke: none;
+}
+.ct-horizontal ~ .ct-horizontal {
+    stroke: none;
+}
+
+.hourly-wrapper .ct-series .ct-bar, .ct-series .ct-line, .ct-series .ct-point, .ct-series .ct-slice-donut  {
+    stroke: #073170 !important;
+    stroke-width: 2px;
+}
+
+/* .hourly-wrapper .ct-vertical ~ .ct-vertical {
+    
+} */
+/* .hourly-wrapper {
+    background: rgba(255, 255, 255, 0.5);
+} */
+.hourly-wrapper .ct-point {
+    stroke-width: 10px;
+    stroke-linecap: round;
+}
+
+.hourly-wrapper .ct-grid {
+    stroke: rgba(0,0,0,.2);
+    stroke-width: 1px;
+    stroke-dasharray: 2px;
+}
+
+.hourly-wrapper .direction {
+    color: #073170;
+    font-weight: 500;
+}
+
+.graphics .ct-series .ct-bar {
+    stroke-width: 40px;
+    align-items: center !important;
+}
+
+.graphics .ct-grid {
+    stroke: rgba(0,0,0,.2);
+    stroke-width: 2px;
+    stroke-dasharray: 2px;
+}
+
+
+@media (min-width: 320px) and (max-width:445px){
+
+    .graphics .ct-series .ct-bar {
+        stroke-width: 15px !important;
+    }
+
+    .ct-label {
+        color: #000 !important;
+        font-size: 8px;
+    }
+}
+
+@media (min-width: 445px) and (max-width:540px){
+
+    .graphics .ct-series .ct-bar {
+        stroke-width: 30px !important;
+    }
+}
+
+.ct-series .ct-label {
+    fill: #fff !important;
+}
+
+.hourly-wrapper .ct-series .ct-label {
+    fill: #fff !important;
+}
